@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+
+use Socialite;
 
 class LoginController extends Controller
 {
@@ -40,10 +43,16 @@ class LoginController extends Controller
 
     public function username()
     {
-        // $value = request()->input(key:'identify');
-        // $field= filter_var($value , filter:FILTER_VALIDATE_EMAIL)?'email':'phone':'name';
-        // request()->merge([$field=>$value]);
-        // return $field ;
+     return 'email' ;
+    }
+
+    public function redirectToProvider(){
+        return Socialite::driver('github')->redirect();
+    }
+
+    public function handleProviderCakkback()
+    {
+        $user = Socialite::driver('github')->user();
     }
   
 }
