@@ -7,7 +7,6 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
-use Socialite;
 
 class LoginController extends Controller
 {
@@ -43,16 +42,12 @@ class LoginController extends Controller
 
     public function username()
     {
-     return 'email' ;
+      // $value = request()->(key:"identify");
+      // $field = filter_var($value, FILTER_VALIDAT_EMAIL) ? 'email' : 'mobile';
+      // request()->merge([$field =>$value]);
+       return 'email';
+
     }
 
-    public function redirectToProvider(){
-        return Socialite::driver('github')->redirect();
-    }
-
-    public function handleProviderCakkback()
-    {
-        $user = Socialite::driver('github')->user();
-    }
   
 }

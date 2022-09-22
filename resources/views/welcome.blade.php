@@ -27,6 +27,10 @@
                     @auth
                         <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
                     @else
+                    <a href="{{ route('githublogin') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Github Login</a>
+
+                    <a href="{{ route('googlelogin') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Google Login</a>
+
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
                         @if (Route::has('register'))
