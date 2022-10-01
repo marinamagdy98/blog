@@ -42,10 +42,24 @@ class LoginController extends Controller
 
     public function username()
     {
-     $loginValue = request('username');
-     $this->username = filter_var($loginValue, FILTER_VALIDATE_EMAIL)?'email' :'username' ;
-     request()->merge([$this->username => $loginValue]);
-     return property_exists($this, 'username') ? $this->username :'email';
+    $value = request()->input(key:'identify');
+
+    // $field = filter_var($value,filter:FILTER_VALIDATE_EMAIL)? 'email' : 'mobile';
+
+      $field = '' ;
+      
+      if(filter_var($value , filter:FILTER_VALIDATE_EMAIL)){
+        $field = 'email';
+
+      }else if ($value = 'username'){
+        $field = 'username';
+
+      }else{
+        $field = 'mobile';
+      }
+
+    request()->merge([$field=> $value]);
+    return $field ;
     }
 
   
